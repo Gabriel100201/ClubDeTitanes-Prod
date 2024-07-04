@@ -16,7 +16,7 @@ export const SectionProximamente = () => {
       <div className='polygon hidden lg:block bg-gradient-to-b from-secondary-950 to-secondary-900 w-32 h-20 absolute m-auto left-0 right-0 z-0 bottom-0 opacity-50'></div>
       <div className='polygon hidden lg:block bg-gradient-to-b from-secondary-950 to-secondary-900 w-32 h-20 absolute m-auto left-[250px] right-0 z-0 -bottom-20 opacity-50'></div>
 
-      <div className="bg-gradient-to-b z-[100] espacio-titanes from-primary-200 via-primary-400 to-primary-600 inline-block text-center text-transparent bg-clip-text text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold">
+      <div className="bg-gradient-to-b py-3 z-[100] espacio-titanes from-primary-200 via-primary-400 to-primary-600 inline-block text-center text-transparent bg-clip-text text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold">
         ¡PRÓXIMAMENTE!
       </div>
     </section>
