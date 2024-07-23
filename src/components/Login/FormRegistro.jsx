@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { Parallax } from 'react-scroll-parallax';
+
 export const FormRegistro = () => {
     return (
         <>
@@ -21,25 +23,28 @@ export const FormRegistro = () => {
                             </h1>
                             <form className="space-y-4 md:space-y-6" action="#">
                                 <div>
-                                    <label for="email" className="block mb-2 text-sm font-medium   text-white">Nombre de usuario</label>
+                                    <label htmlFor="email" className="block mb-2 text-sm font-medium   text-white">Nombre de usuario</label>
                                     <input type="email" name="email" id="email" className="  rounded-lg  block w-full p-2.5  bg-gray-700  border-gray-600  placeholder-gray-400 text-white  focus:ring-blue-500  focus:border-blue-500" placeholder="JuanPerez" required="" />
                                 </div>
-                               
+
                                 <div>
-                                    <label for="email" className="block mb-2 text-sm font-medium   text-white">Tu correo electrónico</label>
+                                    <label htmlFor="email" className="block mb-2 text-sm font-medium   text-white">Tu correo electrónico</label>
                                     <input type="email" name="email" id="email" className="  rounded-lg  block w-full p-2.5  bg-gray-700  border-gray-600  placeholder-gray-400 text-white  focus:ring-blue-500  focus:border-blue-500" placeholder="tu@mail.com" required="" />
                                 </div>
                                 <div>
-                                    <label for="password" className="block mb-2 text-sm font-medium   text-white">Contraseña</label>
+                                    <label htmlFor="password" className="block mb-2 text-sm font-medium   text-white">Contraseña</label>
                                     <input type="password" name="password" id="password" placeholder="••••••••" className="border    rounded-lg block w-full p-2.5  bg-gray-700  border-gray-600  placeholder-gray-400 text-white  focus:ring-blue-500  focus:border-blue-500" required="" />
                                 </div>
                                 <div>
-                                    <label for="password" className="block mb-2 text-sm font-medium   text-white">Contraseña</label>
+                                    <label htmlFor="password" className="block mb-2 text-sm font-medium   text-white">Contraseña</label>
                                     <input type="password" name="password" id="password" placeholder="••••••••" className="border    rounded-lg block w-full p-2.5  bg-gray-700  border-gray-600  placeholder-gray-400 text-white  focus:ring-blue-500  focus:border-blue-500" required="" />
                                 </div>
                                 <button type="submit" className="w-full text-white  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center  bg-primary-600  hover:bg-primary-700  focus:ring-primary-800">Crear cuenta</button>
                                 <p className="text-sm font-light   text-gray-400">
-                                    Ya tienes una cuenta? <a href="/login" className="font-medium hover:underline  text-primary-500">Inicia Sesión</a>
+                                    Ya tienes una cuenta?
+                                    <Link to={"/login"}>
+                                        <a className="font-medium hover:underline  text-primary-500"> Inicia Sesión</a>
+                                    </Link>
                                 </p>
                             </form>
                         </div>

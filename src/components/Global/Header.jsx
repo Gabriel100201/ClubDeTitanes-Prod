@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/icons/LogoTitanes.png";
 import "./header.css";
 
@@ -84,23 +84,23 @@ export const Header = () => {
             </a>
           </div>
           <div className="flex">
-          <a href="#contacto" className="hidden md:flex mr-2">
-            <button className="flex shadow__btn h-10 md:px-3 md:text-xs lg:px-5 lg:text-sm justify-center items-center" >
-              CONTÁCTATE
-            </button>
-          </a>
-          {location.pathname !== "/login" && (
-            <a href="/login" className="ml-2">
-              <button className="flex shadow__btn_secondary h-10 md:px-3 md:text-xs lg:px-5 lg:text-sm justify-center items-center">
-                INICIAR SESIÓN
+            <a href="#contacto" className="hidden md:flex mr-2">
+              <button className="flex shadow__btn h-10 md:px-3 md:text-xs lg:px-5 lg:text-sm justify-center items-center" >
+                CONTÁCTATE
               </button>
             </a>
-          )}
+            {location.pathname !== "/login" && (
+              <Link to={"/login"}>
+                <button className="flex shadow__btn_secondary h-10 py-4 px-4 w-full justify-center items-center">
+                  INICIAR SESIÓN
+                </button>
+              </Link>
+            )}
           </div>
         </nav>
       </div>
       <nav
-        className={` w-full md:hidden md:flex-wrap items-center text-center justify-center transition-all duration-300 ease-in-out ${isMenuOpen ? "block slide-in" : "slide-out"
+        className={`bg-black pb-6 w-full md:hidden md:flex-wrap items-center text-center justify-center transition-all duration-300 ease-in-out ${isMenuOpen ? "block slide-in" : "slide-out"
           } md:flex`}
       >
         <a href="#referencias" className="block px-3 py-1 hover:text-gray-900 cursor-pointer">
@@ -112,18 +112,20 @@ export const Header = () => {
         <a href="#contacto" className="block px-3 py-1 hover:text-gray-900 cursor-pointer">
           <button className="nav-button">CONTACTO</button>
         </a>
-        <a href="#contacto" className="block px-3 py-1 hover:text-gray-900 cursor-pointer">
-          <button className="flex shadow__btn h-10 w-full justify-center items-center">
-            CONTÁCTATE
-          </button>
-        </a>
-        {location.pathname !== "/login" && (
-          <a href="/login" className="block px-3 py-1 hover:text-gray-900 cursor-pointer">
-            <button className="flex shadow__btn_secondary h-10 w-full justify-center items-center">
-              INICIAR SESIÓN
+        <div className="px-12">
+          <Link to={"/#contacto"}>
+            <button className="flex shadow__btn h-10 w-full justify-center items-center mb-4">
+              CONTÁCTATE
             </button>
-          </a>
-        )}
+          </Link>
+          {location.pathname !== "/login" && (
+            <Link to={"/login"}>
+              <button className="flex shadow__btn_secondary h-10 w-full justify-center items-center ">
+                INICIAR SESIÓN
+              </button>
+            </Link>
+          )}
+        </div>
       </nav>
     </header>
   );

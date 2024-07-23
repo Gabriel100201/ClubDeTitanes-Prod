@@ -1,4 +1,5 @@
 import { Parallax } from 'react-scroll-parallax';
+import { Link } from 'react-router-dom';
 export const Form = () => {
     return (
         <section className=" bg-alternative-950 relative h-[calc(100vh-90px)] -mt-3 w-full flex justify-center items-center p-0 sm:p-8 py-32 lg:py-48">
@@ -37,7 +38,9 @@ export const Form = () => {
                                     </div>
                                 </div>
                             </div>
-                                <a href="/recuperar" className="text-sm font-medium  hover:underline  text-primary-500 pt-5">Olvidaste tu contraseña?</a>
+                            <Link to={"/recuperar"}>
+                                <a className="text-sm font-medium  hover:underline  text-primary-500 pt-5">Olvidaste tu contraseña?</a>
+                            </Link>
                             <button type="submit" className="w-full text-white  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center  bg-primary-600  hover:bg-primary-700  focus:ring-primary-800">Iniciar sesión</button>
                             <p className="text-sm font-light   text-gray-400">
                                 Aún no tienes cuenta? <a href="/register" className="font-medium hover:underline  text-primary-500">Regístrate</a>
