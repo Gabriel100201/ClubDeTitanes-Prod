@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Logo from "../../assets/icons/LogoTitanes.png";
 import "./header.css";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,12 +28,11 @@ export const Header = () => {
 
   return (
     <header
-      className={`bg-inherit transition-all md:justify-center body-font z-50 mb-[-10px] fixed w-full flex flex-col items-center ${
-        isScrolled ? "scrolled" : "noscrolled"
-      } ${isMenuOpen ? "h-44" : "h-24"}`}
+      className={`bg-inherit transition-all md:justify-center body-font z-50 mb-[-10px] fixed w-full flex flex-col items-center ${isScrolled ? "scrolled" : "noscrolled"
+        } ${isMenuOpen ? "h-44" : "h-24"}`}
     >
       <div className="container mx-auto flex flex-wrap p-5 md:flex-row items-center justify-between">
-        <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/">
           <img src={Logo} alt="Logo del Club de titanes" className="w-40" />
         </a>
         <button
@@ -69,38 +71,60 @@ export const Header = () => {
             </svg>
           )}
         </button>
-        <nav className="hidden md:ml-auto md:mr-auto md:flex flex-wrap items-center text-base justify-center">
-          <a href="#referencias" className="mr-5 px-3 py-1 hover:text-gray-900 cursor-pointer">
-            <button className="nav-button">REFERENCIAS</button>
+        <nav className="hidden md:ml-auto  md:flex flex-wrap items-center text-base justify-beetween">
+          <div className="flex">
+            <a href="#referencias" className="mr-5 px-3 py-1 hover:text-gray-900 cursor-pointer">
+              <button className="nav-button">REFERENCIAS</button>
+            </a>
+            <a href="#nosotros" className="mr-5 px-3 py-1 hover:text-gray-900 cursor-pointer">
+              <button className="nav-button">NOSOTROS</button>
+            </a>
+            <a href="#contacto" className="mr-5 px-3 py-1 hover:text-gray-900 cursor-pointer">
+              <button className="nav-button">CONTACTO</button>
+            </a>
+          </div>
+          <div className="flex">
+          <a href="#contacto" className="hidden md:flex mr-2">
+            <button className="flex shadow__btn h-10 md:px-3 md:text-xs lg:px-5 lg:text-sm justify-center items-center" >
+              CONTÁCTATE
+            </button>
           </a>
-          <a href="#nosotros" className="mr-5 px-3 py-1 hover:text-gray-900 cursor-pointer">
-            <button className="nav-button">NOSOTROS</button>
-          </a>
-          <a href="#contacto" className="mr-5 px-3 py-1 hover:text-gray-900 cursor-pointer">
-            <button className="nav-button">CONTACTO</button>
-          </a>
+          {location.pathname !== "/login" && (
+            <a href="/login" className="ml-2">
+              <button className="flex shadow__btn_secondary h-10 md:px-3 md:text-xs lg:px-5 lg:text-sm justify-center items-center">
+                INICIAR SESIÓN
+              </button>
+            </a>
+          )}
+          </div>
         </nav>
-        <a href="#contacto" className="hidden md:flex">
-          <button className="flex shadow__btn h-10 md:px-3 md:text-xs lg:px-5 lg:text-sm justify-center items-center" >
-          CONTÁCTATE
-        </button>
-        </a>
       </div>
       <nav
-          className={` w-full md:hidden md:flex-wrap items-center text-center justify-center transition-all duration-300 ease-in-out ${
-            isMenuOpen ? "block slide-in" : "slide-out"
+        className={` w-full md:hidden md:flex-wrap items-center text-center justify-center transition-all duration-300 ease-in-out ${isMenuOpen ? "block slide-in" : "slide-out"
           } md:flex`}
       >
-        <a href="#referencias" className="mr-5 px-3 py-1 hover:text-gray-900 cursor-pointer">
+        <a href="#referencias" className="block px-3 py-1 hover:text-gray-900 cursor-pointer">
           <button className="nav-button">REFERENCIAS</button>
         </a>
-        <a href="#nosotros" className="mr-5 px-3 py-1 hover:text-gray-900 cursor-pointer">
+        <a href="#nosotros" className="block px-3 py-1 hover:text-gray-900 cursor-pointer">
           <button className="nav-button">NOSOTROS</button>
         </a>
-        <a href="#contacto" className="mr-5 px-3 py-1 hover:text-gray-900 cursor-pointer">
-            <button className="nav-button">CONTACTO</button>
+        <a href="#contacto" className="block px-3 py-1 hover:text-gray-900 cursor-pointer">
+          <button className="nav-button">CONTACTO</button>
+        </a>
+        <a href="#contacto" className="block px-3 py-1 hover:text-gray-900 cursor-pointer">
+          <button className="flex shadow__btn h-10 w-full justify-center items-center">
+            CONTÁCTATE
+          </button>
+        </a>
+        {location.pathname !== "/login" && (
+          <a href="/login" className="block px-3 py-1 hover:text-gray-900 cursor-pointer">
+            <button className="flex shadow__btn_secondary h-10 w-full justify-center items-center">
+              INICIAR SESIÓN
+            </button>
           </a>
-        </nav>
+        )}
+      </nav>
     </header>
   );
 };

@@ -22,3 +22,11 @@
               0 0 50px #ea9e2333,
               0 0 100px #ea9e2333;
 }
+
+.shadow__btn_secondary{
+  background: transparent;
+  color: #ea9e23;
+  border: 2px solid #ea9e23;
+  border-radius: 3px;
+  font-weight: 700;
+}
