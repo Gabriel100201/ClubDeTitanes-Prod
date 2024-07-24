@@ -7,6 +7,7 @@ import { FormRegistro } from "./components/Login/FormRegistro";
 import { FormRecuperar } from "./components/Login/FormRecuperar";
 import { ParallaxProvider } from "react-scroll-parallax"
 import { Footer } from './components/Global/Footer';
+import { DashboardHome } from "./components/Dashboard/DashboardHome";
 export default function App() {
   return (
     <Router>
@@ -18,6 +19,8 @@ export default function App() {
         <Route path="/register" element={<FormRegistro />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<FormRecuperar />} />
+        {/* Dashboard Routes */}
+        <Route path="/dashboard" element={<DashboardHome />} />
       </Routes>
       <Footer/>
       </ParallaxProvider>

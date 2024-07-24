@@ -89,7 +89,7 @@ export const Header = () => {
                 CONTÁCTATE
               </button>
             </a>
-            {location.pathname !== "/login" && (
+            {location.pathname === "/" && (
               <Link to={"/login"}>
                 <button className="flex shadow__btn_secondary h-10 py-4 px-4 w-full justify-center items-center">
                   INICIAR SESIÓN
@@ -100,7 +100,7 @@ export const Header = () => {
         </nav>
       </div>
       <nav
-        className={`bg-black pb-6 w-full md:hidden md:flex-wrap items-center text-center justify-center transition-all duration-300 ease-in-out ${isMenuOpen ? "block slide-in" : "slide-out"
+        className={`bg-black pb-6 w-full md:hidden md:flex-wrap items-center text-center justify-center transition-all duration-300 ease-in-out ${isMenuOpen ? "block slide-in" : "slide-out hidden"
           } md:flex`}
       >
         <a href="#referencias" className="block px-3 py-1 hover:text-gray-900 cursor-pointer">
@@ -118,7 +118,7 @@ export const Header = () => {
               CONTÁCTATE
             </button>
           </Link>
-          {location.pathname !== "/login" && (
+          {location.pathname !== "/login" || location.pathname !== "/dashboard" && (
             <Link to={"/login"}>
               <button className="flex shadow__btn_secondary h-10 w-full justify-center items-center ">
                 INICIAR SESIÓN
