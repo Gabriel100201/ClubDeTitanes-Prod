@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/icons/LogoTitanes.png";
 import "./header.css";
-import axios from 'axios'; // Importa axios
+import useAuth from "../../hooks/useAuth";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);

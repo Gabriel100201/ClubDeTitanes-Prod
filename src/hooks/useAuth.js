@@ -11,7 +11,7 @@ const useAuth = () => {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          await axios.get('http://localhost:3000/v1/getInfoUser', {
+          await axios.get('http://localhost:3000/v1/validateToken', {
             headers: {
               Authorization: `Bearer ${token}`
             }
