@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export const DashboardHome = () => {
     const [userInfo, setUserInfo] = useState(null);
@@ -13,21 +14,13 @@ export const DashboardHome = () => {
                     throw new Error('No token found');
                 }
 
-                const response = await fetch('http://localhost:3000/v1/getInfoUser', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ token }),
-                });
+                const response = await axios.post('http://localhost:3000/v1/getInfoUser',
+                { token }, 
+                { headers: { 'Content-Type': 'application/json' } });
 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch user info');
-                }
-
-                const data = await response.json();
-                setUserInfo(data);
+                setUserInfo(response.data);
             } catch (error) {
+                console.log(error);
                 setError(error.message);
             } finally {
                 setLoading(false);
@@ -37,16 +30,10 @@ export const DashboardHome = () => {
         fetchUserInfo();
     }, []);
 
-    if (loading) {
-        return <div className='text-white'>Loading...</div>;
-    }
-
-    if (error) {
-        return <div className='text-white'>Error: {error}</div>;
-    }
 
     return (
-        <section className="bg-alternative-950 relative h-[calc(100vh-90px)] -mt-3 w-full flex justify-center items-center p-0 sm:p-8 py-32 lg:py-48">
+        <section className="bg-alternative-950 relative h-[calc(100vh-90px)] -mt-3 w-full flex justify-center items-center p-0 sm:p-8 py-32 lg:py-48 min-h-96">
+            {error && <div className='text-white'>{error}</div>}
             <div className="text-white">
                 <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">Dashboard Home</h1>
                 {userInfo && (

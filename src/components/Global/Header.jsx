@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/icons/LogoTitanes.png";
 import "./header.css";
+import axios from 'axios'; // Importa axios
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const location = useLocation()
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +23,12 @@ export const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, [location]);
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -89,7 +97,26 @@ export const Header = () => {
                 CONTÁCTATE
               </button>
             </a>
-            {location.pathname === "/" && (
+            {isLoggedIn ? (
+              <Link to={"/dashboard"}>
+                <button className="flex shadow__btn_secondary h-10 py-4 px-4 w-full justify-center items-center">
+                  <svg
+                    className="w-6 h-6 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5.121 17.804A10.058 10.058 0 0112 15c2.21 0 4.26.716 5.879 1.804M15 10a3 3 0 10-6 0 3 3 0 006 0zm7 10a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                </button>
+              </Link>
+            ) : (
               <Link to={"/login"}>
                 <button className="flex shadow__btn_secondary h-10 py-4 px-4 w-full justify-center items-center">
                   INICIAR SESIÓN
@@ -118,7 +145,26 @@ export const Header = () => {
               CONTÁCTATE
             </button>
           </Link>
-          {location.pathname !== "/login" || location.pathname !== "/dashboard" && (
+          {isLoggedIn ? (
+            <Link to={"/dashboard"}>
+              <button className="flex shadow__btn_secondary h-10 w-full justify-center items-center ">
+                <svg
+                  className="w-6 h-6 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5.121 17.804A10.058 10.058 0 0112 15c2.21 0 4.26.716 5.879 1.804M15 10a3 3 0 10-6 0 3 3 0 006 0zm7 10a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              </button>
+            </Link>
+          ) : (
             <Link to={"/login"}>
               <button className="flex shadow__btn_secondary h-10 w-full justify-center items-center ">
                 INICIAR SESIÓN

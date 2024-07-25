@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Parallax } from 'react-scroll-parallax';
 import { Link } from 'react-router-dom';
+import axios from 'axios'; // Importa axios
 
 export const Form = () => {
     const [email, setEmail] = useState('');
@@ -11,29 +12,18 @@ export const Form = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(''); // Reset error state
+        setError('');
 
         try {
-            const response = await fetch('http://localhost:3000/v1/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Error en la solicitud');
-            }
-
-            const data = await response.json();
-            console.log(data);
-            localStorage.setItem('token', data.token); // Guarda el token en el localStorage
-            navigate('/dashboard'); // Redirige a la vista de dashboard
+            const response = await axios.post('http://localhost:3000/v1/login', { email, password });
+            localStorage.setItem('token', response.data.token);
+            navigate('/dashboard');
         } catch (error) {
-            console.error(error);
-            setError(error.message);
+            if (error.response && error.response.data && error.response.data.message) {
+                setError(error.response.data.message);
+            } else {
+                setError('Error en la solicitud');
+            }
         }
     };
 

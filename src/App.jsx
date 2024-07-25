@@ -18,7 +18,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<FormRegistro />} />
         <Route path="/about" element={<About />} />
-        <Route path="*" element={<FormRecuperar />} />
+        <Route path="/recuperar" element={<FormRecuperar />} />
         {/* Dashboard Routes */}
         <Route path="/dashboard" element={<DashboardHome />} />
       </Routes>
