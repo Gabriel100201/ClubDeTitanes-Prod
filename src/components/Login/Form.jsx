@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Parallax } from 'react-scroll-parallax';
 import { Link } from 'react-router-dom';
 import axios from 'axios'; // Importa axios
@@ -7,8 +7,16 @@ import axios from 'axios'; // Importa axios
 export const Form = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        const queryParams = new URLSearchParams(location.search);
+        if (queryParams.get('error') === 'invalid_token') {
+            setError('Tu sesión ha expirado, por favor inicia sesión de nuevo');
+        }
+    }, [location]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,7 +36,7 @@ export const Form = () => {
     };
 
     return (
-        <section className=" bg-alternative-950 relative h-[calc(100vh-90px)] -mt-3 w-full flex justify-center items-center p-0 sm:p-8 py-32 lg:py-48">
+        <section className="bg-alternative-950 relative h-[calc(100vh-90px)] -mt-3 w-full flex justify-center items-center p-0 sm:p-8 py-32 lg:py-48">
             <Parallax speed={0} className='polygon bg-gradient-to-b from-secondary-950 to-secondary-900 w-32 h-32 absolute top-[300px] -left-12 z-0 opacity-50'></Parallax>
             <Parallax speed={0} className='polygon bg-gradient-to-b from-secondary-950 to-secondary-900 w-32 h-32 absolute top-[428px] -left-16 opacity-50'></Parallax>
 
@@ -40,12 +48,12 @@ export const Form = () => {
             <div className='polygon hidden lg:block bg-gradient-to-b from-secondary-950 to-secondary-900 w-32 h-20 absolute m-auto left-[250px] right-0 z-0 -bottom-20 opacity-50'></div>
 
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 z-10">
+                {error && <div className="text-white text-l p-2 mb-3 bg-red-500 rounded-md">{error}</div>}
                 <div className="w-full rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-700">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
                             Iniciar sesión en su cuenta
                         </h1>
-                        {error && <div className="text-red-500 text-sm">{error}</div>}
                         <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                             <div>
                                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-white">Tu correo electrónico</label>
@@ -86,7 +94,9 @@ export const Form = () => {
                             <Link to={"/recuperar"} className='font-medium hover:underline text-primary-500 text-[14px]'>
                                 Olvidaste tu contraseña?
                             </Link>
+
                             <button type="submit" className="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800">Iniciar sesión</button>
+
                             <p className="text-sm font-light text-gray-400">
                                 Aún no tienes cuenta?
                                 <Link to={"/register"} className='font-medium hover:underline text-primary-500 ml-2'>

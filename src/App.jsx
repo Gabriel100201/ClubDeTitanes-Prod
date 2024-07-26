@@ -8,6 +8,7 @@ import { FormRecuperar } from "./components/Login/FormRecuperar";
 import { ParallaxProvider } from "react-scroll-parallax"
 import { Footer } from './components/Global/Footer';
 import { DashboardHome } from "./components/Dashboard/DashboardHome";
+import { Cursos } from "./components/Home/Cursos";
 export default function App() {
   return (
     <Router>
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<FormRegistro />} />
         <Route path="/about" element={<About />} />
+        <Route path="/cursos" element={<Cursos />} />
         <Route path="/recuperar" element={<FormRecuperar />} />
         {/* Dashboard Routes */}
         <Route path="/dashboard" element={<DashboardHome />} />

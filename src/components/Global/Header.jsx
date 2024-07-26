@@ -1,15 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/icons/LogoTitanes.png";
 import "./header.css";
-import useAuth from "../../hooks/useAuth";
+import { FaUser } from "react-icons/fa";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showLogout, setShowLogout] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const userRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,10 +31,32 @@ export const Header = () => {
     setIsLoggedIn(!!token);
   }, [location]);
 
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const toggleLogout = () => {
+    setShowLogout(!showLogout);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    navigate('/login');
+  };
+
+  const handleClickOutside = (event) => {
+    if (userRef.current && !userRef.current.contains(event.target)) {
+      setShowLogout(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header
@@ -79,8 +103,11 @@ export const Header = () => {
             </svg>
           )}
         </button>
-        <nav className="hidden md:ml-auto  md:flex flex-wrap items-center text-base justify-beetween">
+        <nav className="hidden md:ml-auto md:flex flex-wrap items-center text-base justify-between">
           <div className="flex">
+            <Link to={"/cursos"} className="mr-5 px-3 py-1 hover:text-gray-900 cursor-pointer">
+              <button className="nav-button">CURSOS</button>
+            </Link>
             <a href="#referencias" className="mr-5 px-3 py-1 hover:text-gray-900 cursor-pointer">
               <button className="nav-button">REFERENCIAS</button>
             </a>
@@ -91,31 +118,33 @@ export const Header = () => {
               <button className="nav-button">CONTACTO</button>
             </a>
           </div>
-          <div className="flex">
+          <div className="flex items-center relative">
             <a href="#contacto" className="hidden md:flex mr-2">
-              <button className="flex shadow__btn h-10 md:px-3 md:text-xs lg:px-5 lg:text-sm justify-center items-center" >
+              <button className="flex shadow__btn h-10 md:px-3 md:text-xs lg:px-5 lg:text-sm justify-center items-center">
                 CONTÁCTATE
               </button>
             </a>
             {isLoggedIn ? (
-              <Link to={"/dashboard"}>
-                <button className="flex shadow__btn_secondary h-10 py-4 px-4 w-full justify-center items-center">
-                  <svg
-                    className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5.121 17.804A10.058 10.058 0 0112 15c2.21 0 4.26.716 5.879 1.804M15 10a3 3 0 10-6 0 3 3 0 006 0zm7 10a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path>
-                  </svg>
+              <div className="relative" ref={userRef}>
+                <button
+                  className="flex shadow__btn_secondary h-10 py-4 px-4 w-full justify-center items-center"
+                  onClick={toggleLogout}
+                >
+                  <FaUser />
                 </button>
-              </Link>
+                {showLogout && (
+                  <div
+                    className="absolute right-0 mt-2 w-48 py-2 bg-white border border-gray-200 rounded-lg shadow-lg"
+                  >
+                    <button
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={handleLogout}
+                    >
+                      Cerrar sesión
+                    </button>
+                  </div>
+                )}
+              </div>
             ) : (
               <Link to={"/login"}>
                 <button className="flex shadow__btn_secondary h-10 py-4 px-4 w-full justify-center items-center">
@@ -147,26 +176,13 @@ export const Header = () => {
           </Link>
           {isLoggedIn ? (
             <Link to={"/dashboard"}>
-              <button className="flex shadow__btn_secondary h-10 w-full justify-center items-center ">
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M5.121 17.804A10.058 10.058 0 0112 15c2.21 0 4.26.716 5.879 1.804M15 10a3 3 0 10-6 0 3 3 0 006 0zm7 10a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
+              <button className="flex shadow__btn_secondary h-10 w-full justify-center items-center">
+                <FaUser />
               </button>
             </Link>
           ) : (
             <Link to={"/login"}>
-              <button className="flex shadow__btn_secondary h-10 w-full justify-center items-center ">
+              <button className="flex shadow__btn_secondary h-10 w-full justify-center items-center">
                 INICIAR SESIÓN
               </button>
             </Link>
