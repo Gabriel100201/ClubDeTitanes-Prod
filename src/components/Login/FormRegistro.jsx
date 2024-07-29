@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Parallax } from 'react-scroll-parallax';
 import axios from 'axios';
+import { Background } from './../Global/Background';
 
 export const FormRegistro = () => {
     const [username, setUsername] = useState('');
@@ -33,24 +33,17 @@ export const FormRegistro = () => {
 
     return (
         <section className="bg-alternative-950 relative h-[calc(100vh-90px)] -mt-3 w-full flex justify-center items-center p-0 sm:p-8 py-32 lg:py-48">
-            <Parallax speed={0} className='polygon bg-gradient-to-b from-secondary-950 to-secondary-900 w-32 h-32 absolute top-[300px] -left-12 z-0 opacity-50'></Parallax>
-            <Parallax speed={0} className='polygon bg-gradient-to-b from-secondary-950 to-secondary-900 w-32 h-32 absolute top-[428px] -left-16 opacity-50'></Parallax>
-
-            <Parallax speed={0} className='polygon hidden lg:block bg-gradient-to-b from-primary-500 to-primary-700 opacity-50 w-32 h-32 absolute top-[100px] right-0 z-0'></Parallax>
-            <Parallax speed={0} className='polygon hidden lg:block bg-gradient-to-b from-primary-500 to-primary-700 opacity-50 w-32 h-32 absolute top-[228px] right-0'></Parallax>
-
-            <div className='polygon hidden lg:block bg-gradient-to-b from-secondary-950 to-secondary-900 w-32 h-20 absolute m-auto -left-[20px] right-0 z-0 -bottom-20 opacity-50'></div>
-            <div className='polygon hidden lg:block bg-gradient-to-b from-secondary-950 to-secondary-900 w-32 h-20 absolute m-auto left-0 right-0 z-0 bottom-0 opacity-50'></div>
-            <div className='polygon hidden lg:block bg-gradient-to-b from-secondary-950 to-secondary-900 w-32 h-20 absolute m-auto left-[250px] right-0 z-0 -bottom-20 opacity-50'></div>
+            <Background />
 
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 z-10 sm:mt-32">
                 <div className="w-full rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-700 mt-16">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         {isRegistered ? (
                             <div className="text-center text-white">
-                                <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl">Cuenta creada exitosamente</h1>
-                                <Link to="/login" className="mt-4 inline-block text-white bg-primary-600 hover:bg-primary-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                    Iniciar Sesión
+                                <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl mb-4">Hemos enviado un correo de verificación a tu casilla.</h1>
+                                <p className='mb-4'>Por favor revisa tu correo.</p>
+                                <Link to="/">
+                                    <button type="submit" className="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800 mt-8">Volver</button>
                                 </Link>
                             </div>
                         ) : (

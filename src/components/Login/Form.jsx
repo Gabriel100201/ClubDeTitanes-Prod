@@ -25,7 +25,7 @@ export const Form = () => {
         try {
             const response = await axios.post('http://localhost:3000/v1/login', { email, password });
             localStorage.setItem('token', response.data.token);
-            navigate('/dashboard');
+            navigate('/profile');
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
                 setError(error.response.data.message);

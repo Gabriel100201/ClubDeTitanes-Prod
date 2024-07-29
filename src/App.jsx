@@ -7,8 +7,10 @@ import { FormRegistro } from "./components/Login/FormRegistro";
 import { FormRecuperar } from "./components/Login/FormRecuperar";
 import { ParallaxProvider } from "react-scroll-parallax"
 import { Footer } from './components/Global/Footer';
-import { DashboardHome } from "./components/Dashboard/DashboardHome";
+import { Profile } from "./components/Profile/Profile";
 import { Cursos } from "./components/Home/Cursos";
+import { ConfirmEmail } from "./components/Login/ConfirmEmail";
+import { Error404 } from "./components/Global/Error404";
 export default function App() {
   return (
     <Router>
@@ -18,11 +20,14 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<FormRegistro />} />
+        <Route path="/confirm-email" element={<ConfirmEmail />} />
         <Route path="/about" element={<About />} />
         <Route path="/cursos" element={<Cursos />} />
         <Route path="/recuperar" element={<FormRecuperar />} />
-        {/* Dashboard Routes */}
-        <Route path="/dashboard" element={<DashboardHome />} />
+        {/* Profile Routes */}
+        <Route path="/profile" element={<Profile />} />
+        {/* Error 404 */}
+        <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer/>
       </ParallaxProvider>
