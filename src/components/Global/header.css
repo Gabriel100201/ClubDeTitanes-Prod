@@ -39,7 +39,7 @@ transition: all .4s;
 }
 
 .noscrolled {
-  background-color: inherit;
+  background-color: #090A10;
   transition: all .4s;
 }
 /* header {

@@ -3,7 +3,7 @@ import { CardCursos } from "./CardCursos";
 
 export const Cursos = () => {
     return (
-        <section className="relative w-full flex min-h-96 -mt-3 py-32 justify-center bg-alternative-950 items-center">
+        <section className="relative w-full flex min-h-96  justify-center bg-alternative-950 items-center">
             {/* <Background /> */}
             <div className="z-10 w-full">
                 <div className="w-full bg-secondary-950">

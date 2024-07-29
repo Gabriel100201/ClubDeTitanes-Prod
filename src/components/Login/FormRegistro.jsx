@@ -32,11 +32,11 @@ export const FormRegistro = () => {
     };
 
     return (
-        <section className="bg-alternative-950 relative h-[calc(100vh-90px)] -mt-3 w-full flex justify-center items-center p-0 sm:p-8 py-32 lg:py-48">
+        <section className="bg-alternative-950 relative w-full flex justify-center items-center p-0 sm:p-8 h-[calc(100vh-196px)]">
             <Background />
 
-            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 z-10 sm:mt-32">
-                <div className="w-full rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-700 mt-16">
+            <div className="flex flex-col items-center justify-center px-6  mx-auto   z-10">
+                <div className="w-full rounded-lg shadow border    bg-gray-800 border-gray-700 ">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         {isRegistered ? (
                             <div className="text-center text-white">

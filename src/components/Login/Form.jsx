@@ -36,7 +36,7 @@ export const Form = () => {
     };
 
     return (
-        <section className="bg-alternative-950 relative h-[calc(100vh-90px)] -mt-3 w-full flex justify-center items-center p-0 sm:p-8 py-32 lg:py-48">
+        <section className="bg-alternative-950 relative h-[calc(100vh-184px)] -mt-3 w-full flex justify-center items-center p-0 sm:p-8 py-32 lg:py-48">
             <Parallax speed={0} className='polygon bg-gradient-to-b from-secondary-950 to-secondary-900 w-32 h-32 absolute top-[300px] -left-12 z-0 opacity-50'></Parallax>
             <Parallax speed={0} className='polygon bg-gradient-to-b from-secondary-950 to-secondary-900 w-32 h-32 absolute top-[428px] -left-16 opacity-50'></Parallax>
 

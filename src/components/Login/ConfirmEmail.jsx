@@ -25,7 +25,7 @@ export const ConfirmEmail = () => {
     }, [email, token]);
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-alternative-950">
+        <div className=" h-[calc(100vh-190px)] flex flex-col items-center justify-center min-h-screen bg-alternative-950 ">
             <Background />
             {isVerified ? (
                 <div className="text-center text-green-500">
