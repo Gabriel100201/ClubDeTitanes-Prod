@@ -1,38 +1,21 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useAuthStore } from '../context/store';
+import { loginService } from '../services/login';
 
-const useAuth = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useNavigate();
+export const useAuth = () => {
+  const { user, login, logout, isAuthenticated } = useAuthStore();
 
-  useEffect(() => {
-    const checkToken = async () => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        try {
-          await axios.get('http://localhost:3000/v1/validateToken', {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          });
-          setIsLoggedIn(true);
-        } catch (error) {
-          if (error.code === 'ERR_BAD_REQUEST') {
-            localStorage.removeItem('token');
-            setIsLoggedIn(false);
-            navigate('/login');
-          }
-        }
-      } else {
-        setIsLoggedIn(false);
-      }
-    };
+  const handleLogin = async ({ email, password }) => {
+    const result = await loginService({ email, password });
+    if (!result.token) {
+      throw new Error(result.message);
+    }
+    const userData = { email: email, token: result.token };
+    login(userData);
+  };
 
-    checkToken();
-  }, [navigate]);
+  const handleLogout = () => {
+    logout();
+  };
 
-  return isLoggedIn;
+  return { user, login: handleLogin, logout: handleLogout, isAuthenticated };
 };
-
-export default useAuth;

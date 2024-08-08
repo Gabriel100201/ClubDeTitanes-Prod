@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Parallax } from 'react-scroll-parallax';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth2';
+import { useAuth } from '../../hooks/useAuth';
 
 export const Form = () => {
   const [email, setEmail] = useState('');

@@ -28,12 +28,10 @@ export const Profile = () => {
 
                 setUserInfo(response.data);
             } catch (error) {
-                console.log(JSON.stringify(error));
                 if (error.status === 401 || (error.response && error.response.status === 401)) {
                     localStorage.removeItem('token');
                     navigate('/login?error=invalid_token');
                 } else {
-                    console.log(error);
                     setError(error.message);
                 }
             } finally {

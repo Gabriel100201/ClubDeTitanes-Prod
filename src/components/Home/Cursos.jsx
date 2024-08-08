@@ -1,4 +1,3 @@
-import { Background } from "../Global/Background";
 import { CardCursos } from "./CardCursos";
 
 export const Cursos = () => {

@@ -26,7 +26,6 @@ export const FormRegistro = () => {
 
             setIsRegistered(true);
         } catch (error) {
-            console.error(error);
             alert("Error en el registro: " + (error.response?.data?.message || error.message));
         }
     };
