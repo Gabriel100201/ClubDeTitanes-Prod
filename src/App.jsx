@@ -24,9 +24,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/cursos" element={<Cursos />} />
         <Route path="/recuperar" element={<FormRecuperar />} />
-        {/* Profile Routes */}
         <Route path="/profile" element={<Profile />} />
-        {/* Error 404 */}
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer/>
