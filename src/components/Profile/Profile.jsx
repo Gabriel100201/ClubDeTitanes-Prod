@@ -1,46 +1,13 @@
-import  { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import  { useState } from 'react';
 import { Background } from '../Global/Background';
 import profile from './../../assets/icons/profile.svg';
 import { MdOutlineEmail } from "react-icons/md";
 import { Ranking } from './Ranking';
 
 export const Profile = () => {
-    const [userInfo, setUserInfo] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const fetchUserInfo = async () => {
-            try {
-                const token = localStorage.getItem('token');
-                if (!token) {
-                    const error = new Error('No token found');
-                    error.status = 401;
-                    throw error;
-                }
-
-                const response = await axios.post('http://localhost:3000/v1/getInfoUser',
-                    { token },
-                    { headers: { 'Content-Type': 'application/json' } });
-
-                setUserInfo(response.data);
-            } catch (error) {
-                if (error.status === 401 || (error.response && error.response.status === 401)) {
-                    localStorage.removeItem('token');
-                    navigate('/login?error=invalid_token');
-                } else {
-                    setError(error.message);
-                }
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchUserInfo();
-    }, [navigate]);
+    const [userInfo,] = useState(null);
+    const [loading,] = useState(false);
+    const [error,] = useState(null);
 
     return (
         <section className="bg-alternative-950 relative h-[calc(100vh-90px)] -mt-3 w-full flex flex-col lg:flex-row justify-start p-0 sm:p-8 py-32 lg:py-48 min-h-96">
