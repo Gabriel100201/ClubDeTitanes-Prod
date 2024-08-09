@@ -17,6 +17,11 @@ export const useAuthStore = create((set) => ({
     if (isValidToken) {
       return isValidToken;
     }
+    else {
+      localStorage.removeItem("user");
+      set({ user: null });
+      return false;
+    }
   }
 
 }));

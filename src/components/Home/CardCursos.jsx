@@ -7,7 +7,7 @@ export const CardCursos = ({ title, desc }) => {
                                 {title}
                             </a>
                             <p className="text-gray-500 dark:text-gray-300">{desc}</p>
-                            <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
+                <button className="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80">
                                 Ver Curso
                             </button>
                             <span className="text-sm text-gray-500 dark:text-gray-300"></span>
