@@ -19,7 +19,6 @@ export const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    console.log(showLogout);
   }, [showLogout]);
 
   // Add event listener to detect scroll
@@ -70,7 +69,7 @@ export const Header = () => {
 
   return (
     <>
-      <div className="w-full sm:h-24 bg-inherit"></div>
+      <div className="w-full sm:h-20 bg-inherit"></div>
       <header
         className={`transition-all md:justify-center body-font z-50 top-0 fixed w-full flex flex-col items-center ${isScrolled ? "scrolled" : "noscrolled"}`}
       >

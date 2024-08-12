@@ -8,7 +8,7 @@ import { FormRecuperar } from "./components/Login/FormRecuperar";
 import { ParallaxProvider } from "react-scroll-parallax"
 import { Footer } from './components/Global/Footer';
 import { Profile } from "./components/Profile/Profile";
-import { Cursos } from "./components/Home/Cursos";
+import { Cursos } from "./pages/Cursos";
 import { ConfirmEmail } from "./components/Login/ConfirmEmail";
 import { Error404 } from "./components/Global/Error404";
 import ProtectedRoute from "./components/Global/ProtectedRoute";
