@@ -3,16 +3,30 @@ const URL_API = import.meta.env.VITE_API_URL;
 
 export const getCursosService = async () => {
   try {
-    const results = await axios.get(URL_API + "/getCursos", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("user").token}`,
-      },
-    });
-    console.log(results);
-    return results.data.cursos;
+    const results = await axios.post(
+      URL_API + "/getCursos",
+      {},
+      {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`,
+        },
+      }
+    );
+    return results.data;
   } catch (error) {
-    console.log(error);
-    return error.response.data || error;
+    if (error.response.status === 402) {
+      const results = await axios.post(
+        URL_API + "/getFreeCursos",
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`,
+          },
+        }
+      );
+      return results.data;
+    }
   }
 };
