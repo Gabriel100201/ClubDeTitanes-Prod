@@ -9,7 +9,7 @@ export const useAuth = () => {
   const handleLogin = async ({ email, password }) => {
     const result = await loginService({ email, password });
     if (!result.token) {
-      throw new Error(result.message);
+      throw new Error(result);
     }
     const userData = { email: email, token: result.token };
     login(userData);

@@ -13,6 +13,6 @@ export const loginService = async ({ email, password }) => {
     if (error.code == "ERR_NETWORK") {
       throw new Error("Error de red");
     }
-    return error.response.data || error;
+    return error.response.data.message[0].msg || error.response.data.message || error;
   }
 }
