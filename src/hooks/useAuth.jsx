@@ -11,7 +11,7 @@ export const useAuth = () => {
     if (!result.token) {
       throw new Error(result);
     }
-    const userData = { email: email, token: result.token };
+    const userData = { email: email, token: result.token, isProUser: result.userType };
     login(userData);
     navigate('/');
   };

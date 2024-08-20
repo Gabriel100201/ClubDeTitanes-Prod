@@ -2,3 +2,7 @@
     background:
       radial-gradient(700px circle at 550px -100px, #3a4199, transparent 25%)
     }
+  
+.arrow{
+  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+}
