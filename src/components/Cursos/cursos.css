@@ -6,3 +6,9 @@
 .arrow{
   clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
 }
+
+.shadow_section {
+  box-shadow: 0px 0px 14px 3px #f3f3f388;
+-webkit-box-shadow: 0px 0px 70px -25px #f3f3f388;
+-moz-box-shadow: 0px 0px 14px 3px #f3f3f3;
+}
