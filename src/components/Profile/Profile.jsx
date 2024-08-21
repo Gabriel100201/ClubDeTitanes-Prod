@@ -10,14 +10,14 @@ export const Profile = () => {
     const [error,] = useState(null);
 
     return (
-        <section className="bg-alternative-950 relative h-[calc(100vh-90px)] -mt-3 w-full flex flex-col lg:flex-row justify-start p-0 sm:p-8 py-32 lg:py-48 min-h-96">
-            <Background />
+        <section className="bg-alternative-950 relative h-[calc(100vh-90px)] -mt-3 w-full flex flex-col lg:flex-col justify-start p-0 sm:p-8 py-32 lg:py-48 min-h-96">
+            {/* <Background /> */}
             {loading ? (
                 <div className='text-white'>Cargando...</div>
             ) : (
                 <>
                     {error && <div className='text-white'>{error}</div>}
-                    <div className="z-10 w-full lg:w-1/2 px-4 pb-11 lg:px-20 order-2 lg:order-1">
+                    <div className="z-10 w-full px-4 pb-11 lg:px-20">
                         {userInfo && (
                             <div className="max-w-sm mx-auto bg-gray-900 rounded-lg overflow-hidden shadow-lg">
                                 <div className="px-4 pb-6">
@@ -42,7 +42,7 @@ export const Profile = () => {
                             </div>
                         )}
                     </div>
-                    <div className="z-10 pt-32 pb-20 w-full md:pt-10 lg:w-1/2 order-1 lg:order-2">
+                    <div className="z-10 pt-32 pb-20 w-full md:pt-10 flex justify-center align-middle ">
                         <Ranking />
                     </div>
                 </>
