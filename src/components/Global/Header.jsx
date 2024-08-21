@@ -11,6 +11,7 @@ export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const navigate = useNavigate();
   const userRef = useRef(null);
   const location = useLocation();
@@ -50,6 +51,11 @@ export const Header = () => {
   }, [isAuthenticated]);
 
   useEffect(() => {
+    if (location.pathname === "/subscription") {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
     setIsMenuOpen(false);
   }, [location]);
 
@@ -69,6 +75,8 @@ export const Header = () => {
 
   return (
     <>
+      {!hidden && (
+        <>
       <div className="w-full sm:h-20 bg-inherit"></div>
       <header
         className={`transition-all md:justify-center body-font z-50 top-0 fixed w-full flex flex-col items-center ${isScrolled ? "scrolled" : "noscrolled"}`}
@@ -95,18 +103,18 @@ export const Header = () => {
               </svg>
             ) : (
               <svg
-                className="w-6 h-6 transition-transform transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+                  className="w-6 h-6 transition-transform transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M4 6h16M4 12h16m-7 6h7"
-                ></path>
+                  ></path>
               </svg>
             )}
           </button>
@@ -120,6 +128,8 @@ export const Header = () => {
         </div>
         <MobileNav isMenuOpen={isMenuOpen} isLoggedIn={isLoggedIn} showLogout={showLogout} />
       </header>
+      </>
+      )}
     </>
   );
 };

@@ -11,6 +11,7 @@ import { Profile } from "./components/Profile/Profile";
 import { Cursos } from "./pages/Cursos";
 import { ConfirmEmail } from "./components/Login/ConfirmEmail";
 import { Error404 } from "./components/Global/Error404";
+import { Subscription } from "./pages/Subscription";
 import ProtectedRoute from "./components/Global/ProtectedRoute";
 
 export default function App() {
@@ -21,10 +22,11 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="register" element={<FormRegistro />} />
+          <Route path="/register" element={<FormRegistro />} />
           <Route path="/confirm-email" element={<ConfirmEmail />} />
           <Route path="/about" element={<About />} />
           <Route path="/recuperar" element={<FormRecuperar />} />
+          <Route path="/subscription" element={<Subscription />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/cursos" element={<Cursos />} />
