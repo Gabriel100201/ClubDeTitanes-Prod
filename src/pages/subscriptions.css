@@ -20,3 +20,7 @@
   filter: brightness(0.3);
   z-index: -1;
 }
+
+.shadow-estatua {
+  filter: drop-shadow(40px -30px 15px rgba(0, 0, 0, 0.5));
+}

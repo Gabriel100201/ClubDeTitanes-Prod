@@ -2,12 +2,12 @@ import { FaArrowAltCircleLeft } from 'react-icons/fa';
 import './subscriptions.css';
 import { useNavigate } from 'react-router-dom';
 import LogoTitanes from '../assets/icons/LogoTitanes.png'
-
+import Estatua from '../assets/images/estatua.png'
 export const Subscription = () => {
   const navigate = useNavigate(); // Hook para navegar
 
   return (
-    <section className="w-full bg-hero">
+    <section className="w-full bg-hero relative">
       <button
         onClick={() => navigate(-1)}
         className='bg-white/10 hover:bg-white/20 border-white border-2 absolute top-5 left-5 transition-colors flex items-center z-50 justify-center gap-5 rounded-md px-4 py-2 text-white font-semibold'
@@ -39,9 +39,11 @@ export const Subscription = () => {
               Para todos los niveles</li>
           </ul>
         </div>
-        <div className='w-1/3 flex justify-center items-center'>
-
+        <div className='w-1/3 flex relative justify-center items-center'>
+{/*           <img className='absolute left-28 bottom-10 opacity-10 grayscale' src={Estatua} alt="" />
+ */}          <img className='z-10 shadow-estatua' src={Estatua} alt="" />
         </div>
+        <img className='absolute z-0 bottom-56 left-0 opacity-10 scale-150' src={Estatua} alt="" />
       </div>
 
       <div className='w-full h-16 bg-primary-100 flex justify-center items-center'>SEPARADOR</div>
