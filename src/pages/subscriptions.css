@@ -24,3 +24,9 @@
 .shadow-estatua {
   filter: drop-shadow(40px -30px 15px rgba(0, 0, 0, 0.5));
 }
+
+.shadow-banner-promo {
+  box-shadow: 2px 1px 45px 0px rgba(207,207,207,0.75);
+-webkit-box-shadow: 2px 1px 45px 0px rgba(207,207,207,0.75);
+-moz-box-shadow: 2px 1px 45px 0px rgba(207,207,207,0.75);
+}
