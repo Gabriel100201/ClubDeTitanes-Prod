@@ -23,7 +23,9 @@ export const Subscription = () => {
           </div>
           <h3 className='text-3xl text-white font-semibold'>IMPULSA TU CRECIMEINTO</h3>
           <h2 className='bg-gradient-to-b py-3 z-[100] from-primary-200 via-primary-400 to-primary-600 inline-block text-transparent bg-clip-text font-bold text-7xl'>PERSONAL Y PROFESIONAL</h2>
-          <button className='w-full text-white bg-primary-600 hover:bg-secondary-950 transition-all hover:text-primary-400 hover:border-primary-500 border-transparent border-2 rounded-md text-base sm:text-lg font-bold sm:w-96 h-20 sm:h-16 mt-7'>Subscríbete a Premium</button>
+          <button className='w-full z-10 text-white bg-primary-600 hover:bg-secondary-950 transition-all hover:text-primary-400 hover:border-primary-500 border-transparent border-2 rounded-md text-base sm:text-lg font-bold sm:w-96 h-20 sm:h-16 mt-7'>
+            Subscríbete a Premium
+          </button>
           <ul className='text-white mt-10 flex flex-col gap-3 text-lg'>
             <li className='flex items-center gap-5'>
               <div className='w-4 h-4 bg-primary-500 rounded-full' />
@@ -40,8 +42,7 @@ export const Subscription = () => {
           </ul>
         </div>
         <div className='w-1/3 flex relative justify-center items-center'>
-{/*           <img className='absolute left-28 bottom-10 opacity-10 grayscale' src={Estatua} alt="" />
- */}          <img className='z-10 shadow-estatua' src={Estatua} alt="" />
+          <img className='z-0 shadow-estatua' src={Estatua} alt="" />
         </div>
         <img className='absolute z-0 bottom-56 left-0 opacity-10 scale-150' src={Estatua} alt="" />
       </div>
