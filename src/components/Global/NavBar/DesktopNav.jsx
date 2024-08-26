@@ -82,7 +82,7 @@ export const DesktopNav = ({ isLoggedIn, toggleLogout, userRef, showLogout, navi
           </div>
         ) : (
           <Link to={"/login"}>
-            <button className="flex shadow__btn_secondary h-10 py-4 px-4 w-full justify-center items-center">
+            <button className="flex shadow__btn_secondary h-10 py-4 px-4 w-full justify-center items-center hover:bg-primary-500/20 transition-colors hover:text-white">
               INICIAR SESIÓN
             </button>
           </Link>

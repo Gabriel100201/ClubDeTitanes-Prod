@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Background } from './../Global/Background';
 import { useAuth } from '../../hooks/useAuth';
 
@@ -11,6 +11,8 @@ export const FormRegistro = () => {
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [isRegistered, setIsRegistered] = useState(false);
     const [error, setError] = useState(null);
+
+    const { code } = useParams();
 
     const { register } = useAuth();
 
@@ -25,7 +27,7 @@ export const FormRegistro = () => {
             return;
         }
         try {
-            await register({ username, email, password });
+            await register({ username, email, password, code });
             setIsRegistered(true);
         }
         catch (error) {

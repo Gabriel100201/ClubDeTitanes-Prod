@@ -22,7 +22,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<FormRegistro />} />
+          <Route path="/register/:code?" element={<FormRegistro />} />
           <Route path="/confirm-email" element={<ConfirmEmail />} />
           <Route path="/about" element={<About />} />
           <Route path="/recuperar" element={<FormRecuperar />} />
