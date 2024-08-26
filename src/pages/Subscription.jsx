@@ -5,6 +5,7 @@ import './subscriptions.css';
 
 export const Subscription = () => {
 
+  window.scrollTo(0, 0);
 
   return (
     <>

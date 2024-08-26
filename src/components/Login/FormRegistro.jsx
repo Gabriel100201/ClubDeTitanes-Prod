@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { Background } from './../Global/Background';
+import { useAuth } from '../../hooks/useAuth';
+
 
 export const FormRegistro = () => {
     const [username, setUsername] = useState('');
@@ -9,26 +10,28 @@ export const FormRegistro = () => {
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [isRegistered, setIsRegistered] = useState(false);
+    const [error, setError] = useState(null);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (password !== passwordConfirm) {
-            alert("Las contraseñas no coinciden");
+    const { register } = useAuth();
+
+    const handleSubmit = async (ev) => {
+        ev.preventDefault();
+        if (!username || !email || !password || !passwordConfirm) {
+            setError('Todos los campos son obligatorios');
             return;
         }
-
-        try {
-            const response = await axios.post('http://localhost:3000/v1/register', {
-                username,
-                email,
-                password
-            });
-
-            setIsRegistered(true);
-        } catch (error) {
-            alert("Error en el registro: " + (error.response?.data?.message || error.message));
+        if (password !== passwordConfirm) {
+            setError('Las contraseñas no coinciden');
+            return;
         }
-    };
+        try {
+            await register({ username, email, password });
+            setIsRegistered(true);
+        }
+        catch (error) {
+            setError(error.message || 'Error en la solicitud');
+        }
+    }
 
     return (
         <section className="bg-alternative-950 relative w-full flex justify-center items-center p-0 sm:p-8 h-[calc(100vh-196px)]">
@@ -47,6 +50,9 @@ export const FormRegistro = () => {
                             </div>
                         ) : (
                             <>
+                                    {
+                                        error && <div className="text-center text-red-500 mb-4">{error}</div>
+                                    }
                                 <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">
                                     Registrate en nuestro club
                                 </h1>

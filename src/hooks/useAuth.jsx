@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../context/store';
 import { loginService } from '../services/login';
+import { registerService } from '../services/register';
 
 export const useAuth = () => {
   const { user, login, logout, isAuthenticated } = useAuthStore();
@@ -16,10 +17,19 @@ export const useAuth = () => {
     navigate('/');
   };
 
+  const handleRegister = async ({ username, email, password, code }) => {
+    try {
+      const message = await registerService({ username, email, password, code });
+      return message;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
   const handleLogout = () => {
     logout();
     navigate('/');
   };
 
-  return { user, login: handleLogin, logout: handleLogout, isAuthenticated };
+  return { user, login: handleLogin, logout: handleLogout, isAuthenticated, register: handleRegister };
 };

@@ -47,7 +47,7 @@ export const DesktopNav = ({ isLoggedIn, toggleLogout, userRef, showLogout, navi
         {isLoggedIn ? (
           <div className="relative" ref={userRef}>
             <button
-              className="flex shadow__btn_secondary h-10 py-4 px-4 w-full justify-center items-center"
+              className="flex shadow__btn_secondary h-10 py-4 px-4 w-full justify-center items-center hover:bg-primary-500/20 hover:text-white transition-colors"
               onClick={toggleLogout}
             >
               <FaUser />
