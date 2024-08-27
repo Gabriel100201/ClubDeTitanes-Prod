@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Background } from './../Global/Background';
 import { useAuth } from '../../hooks/useAuth';
 
@@ -12,7 +12,9 @@ export const FormRegistro = () => {
     const [isRegistered, setIsRegistered] = useState(false);
     const [error, setError] = useState(null);
 
-    const { code } = useParams();
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const code = queryParams.get('code');
 
     const { register } = useAuth();
 
@@ -27,6 +29,7 @@ export const FormRegistro = () => {
             return;
         }
         try {
+            console.log(code);
             await register({ username, email, password, code });
             setIsRegistered(true);
         }
@@ -100,7 +103,7 @@ export const FormRegistro = () => {
                                         />
                                     </div>
                                     <div>
-                                        <label htmlFor="passwordConfirm" className="block mb-2 text-sm font-medium text-white">Confirmar Contraseña</label>
+                                            <label htmlFor="passwordConfirm" autoComplete='new-password' className="block mb-2 text-sm font-medium text-white">Confirmar Contraseña</label>
                                         <input
                                             type="password"
                                             name="passwordConfirm"

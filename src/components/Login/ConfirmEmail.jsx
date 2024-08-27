@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Background } from './../Global/Background';
+import { validateEmailService } from '../../services/validateEmail';
 
 export const ConfirmEmail = () => {
     const [isVerified, setIsVerified] = useState(false);
@@ -10,19 +10,20 @@ export const ConfirmEmail = () => {
     const query = new URLSearchParams(useLocation().search);
     const email = query.get('email');
     const token = query.get('token');
+    const code = query.get('code');
 
     useEffect(() => {
-        const verifyEmail = async () => {
+        const validateRegister = async () => {
             try {
-                const response = await axios.post('http://localhost:3000/v1/validateRegister', { email, token });
+                const result = await validateEmailService({ email, token, code });
+                console.log(result);
                 setIsVerified(true);
             } catch (error) {
-                setError(error.response?.data?.message || error.message);
+                setError(error.message);
             }
-        };
-
-        verifyEmail();
-    }, [email, token]);
+        }
+        validateRegister();
+    }, [code, email, token]);
 
     return (
         <div className=" h-[calc(100vh-190px)] flex flex-col items-center justify-center min-h-screen bg-alternative-950 ">
