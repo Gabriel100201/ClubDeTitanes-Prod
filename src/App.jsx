@@ -13,6 +13,7 @@ import { ConfirmEmail } from "./components/Login/ConfirmEmail";
 import { Error404 } from "./components/Global/Error404";
 import { Subscription } from "./pages/Subscription";
 import ProtectedRoute from "./components/Global/ProtectedRoute";
+import { SuccessPayment } from "./pages/SuccessPayment";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/recuperar" element={<FormRecuperar />} />
           <Route path="/subscription" element={<Subscription />} />
           <Route element={<ProtectedRoute />}>
+            <Route path="/success/:session_id?" element={<SuccessPayment />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/cursos" element={<Cursos />} />
           </Route>
