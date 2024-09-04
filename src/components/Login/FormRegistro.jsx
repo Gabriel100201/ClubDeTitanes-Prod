@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Background } from './../Global/Background';
 import { useAuth } from '../../hooks/useAuth';
-
+import { ThreeCircles } from 'react-loader-spinner';
 
 export const FormRegistro = () => {
     const [username, setUsername] = useState('');
@@ -11,6 +11,7 @@ export const FormRegistro = () => {
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [isRegistered, setIsRegistered] = useState(false);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -19,6 +20,7 @@ export const FormRegistro = () => {
     const { register } = useAuth();
 
     const handleSubmit = async (ev) => {
+        setLoading(true);
         ev.preventDefault();
         if (!username || !email || !password || !passwordConfirm) {
             setError('Todos los campos son obligatorios');
@@ -35,6 +37,9 @@ export const FormRegistro = () => {
         }
         catch (error) {
             setError(error.message || 'Error en la solicitud');
+        }
+        finally {
+            setLoading(false);
         }
     }
 
@@ -115,7 +120,25 @@ export const FormRegistro = () => {
                                             onChange={(e) => setPasswordConfirm(e.target.value)}
                                         />
                                     </div>
-                                    <button type="submit" className="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800">Crear cuenta</button>
+                                        <button type="submit" className="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800 relative">
+                                            <span>
+                                                Crear cuenta
+                                            </span>
+                                            {
+                                                loading &&
+                                                <div className='absolute right-2 top-2'>
+                                                    <ThreeCircles
+                                                        visible={true}
+                                                        height="20"
+                                                        width="20"
+                                                        color="#fff"
+                                                        ariaLabel="three-circles-loading"
+                                                        wrapperStyle={{}}
+                                                        wrapperClass=""
+                                                    />
+                                                </div>
+                                            }
+                                        </button>
                                     <p className="text-sm font-light text-gray-400">
                                         Ya tienes una cuenta?
                                         <Link to={"/login"} className='font-medium hover:underline text-primary-500 ml-2'>
