@@ -8,3 +8,13 @@
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
 }
+.bg-textura-1{
+  background-color: #090a10;
+  opacity: 0.8;
+  background-image:  linear-gradient(#121212 1px, transparent 1px), linear-gradient(to right, #121212 1px, #090a10 1px);
+  background-size: 20px 20px;
+}
+.bgCursoCard1 {
+  background:
+    radial-gradient(700px circle at 550px -100px, #3a4199, transparent 25%)
+  }

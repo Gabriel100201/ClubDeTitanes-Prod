@@ -46,12 +46,14 @@ export default {
           '900': '#2c324e',
           '950': '#090a10',
         },
-        fontFamily: {
-          'sans': ['Poppins', 'sans-serif'],
-        }
-      }
+      },
+      backgroundImage: {
+        'texture-1': "url('./src/assets/images/Hero.png')",
+      },
+      fontFamily: {
+        'sans': ['Poppins', 'sans-serif'],
+      },
     },
   },
   plugins: [],
 }
-

@@ -39,7 +39,7 @@ export const FormRegistro = () => {
     }
 
     return (
-        <section className="bg-alternative-950 relative w-full flex justify-center items-center p-0 sm:p-8 h-[calc(100vh-196px)]">
+        <section className="bg-alternative-950 relative w-full flex justify-center items-center p-0 sm:p-8 h-[calc(100vh-180px)]">
             <Background />
 
             <div className="flex flex-col items-center justify-center px-6  mx-auto   z-10">
