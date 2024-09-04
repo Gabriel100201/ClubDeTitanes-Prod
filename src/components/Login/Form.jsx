@@ -3,11 +3,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Parallax } from 'react-scroll-parallax';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
+import { ThreeCircles } from 'react-loader-spinner';
 
 export const Form = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { login } = useAuth();
@@ -20,6 +22,7 @@ export const Form = () => {
   }, [location]);
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     setError('');
     try {
@@ -27,6 +30,9 @@ export const Form = () => {
       navigate('/');
     } catch (error) {
       setError(error.message || 'Error en la solicitud');
+    }
+    finally {
+      setLoading(false);
     }
   };
 
@@ -89,8 +95,25 @@ export const Form = () => {
               <Link to={"/recuperar"} className='font-medium hover:underline text-primary-500 text-[14px]'>
                 Olvidaste tu contraseña?
               </Link>
-
-              <button type="submit" className="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800">Iniciar sesión</button>
+              <button type="submit" className="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 relative focus:ring-primary-800 flex">
+                <span>
+                  Iniciar sesión
+                </span>
+                {
+                  loading &&
+                  <div className='absolute right-2'>
+                    <ThreeCircles
+                      visible={true}
+                      height="20"
+                      width="20"
+                      color="#fff"
+                      ariaLabel="three-circles-loading"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                    />
+                  </div>
+                }
+              </button>
 
               <p className="text-sm font-light text-gray-400">
                 Aún no tienes cuenta?
