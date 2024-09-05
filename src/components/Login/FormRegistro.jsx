@@ -31,7 +31,6 @@ export const FormRegistro = () => {
             return;
         }
         try {
-            console.log(code);
             await register({ username, email, password, code });
             setIsRegistered(true);
         }

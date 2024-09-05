@@ -3,7 +3,10 @@ import { isValidTokenService } from "../services/isValidToken";
 
 export const useAuthStore = create((set) => ({
   user: JSON.parse(localStorage.getItem("user")) || null,
-
+  updateInfoUser: (data) => {
+    localStorage.setItem("user", JSON.stringify(data));
+    set({ user: data });
+  },
   login: (userData) => {
     localStorage.setItem("user", JSON.stringify(userData));
     set({ user: userData });

@@ -18,8 +18,7 @@ export const ConfirmEmail = () => {
         setIsLoading(true);
         const validateRegister = async () => {
             try {
-                const result = await validateEmailService({ email, token, code });
-                console.log(result);
+                await validateEmailService({ email, token, code });
                 setIsVerified(true);
             } catch (error) {
                 setError(error.message);

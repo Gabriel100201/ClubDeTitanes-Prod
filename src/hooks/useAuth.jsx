@@ -2,17 +2,27 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../context/store';
 import { loginService } from '../services/login';
 import { registerService } from '../services/register';
+import { getInfoUserService } from '../services/getInfoUser';
 
 export const useAuth = () => {
-  const { user, login, logout, isAuthenticated } = useAuthStore();
+  const { user, login, logout, isAuthenticated, updateInfoUser } = useAuthStore();
   const navigate = useNavigate();
 
+  const updateUser = async () => {
+    try {
+      const userData = await getInfoUserService();
+      updateInfoUser(userData);
+    } catch (error) {
+      throw new Error(error.message);
+    }
+
+  }
   const handleLogin = async ({ email, password }) => {
     const result = await loginService({ email, password });
     if (!result.token) {
       throw new Error(result);
     }
-    const userData = { email: email, token: result.token, isProUser: result.userType };
+    const userData = { email: email, token: result.token, points: result.points, isProUser: result.userType, username: result.username, code: result.referral_code };
     login(userData);
     navigate('/');
   };
@@ -31,5 +41,5 @@ export const useAuth = () => {
     navigate('/');
   };
 
-  return { user, login: handleLogin, logout: handleLogout, isAuthenticated, register: handleRegister };
+  return { user, login: handleLogin, logout: handleLogout, isAuthenticated, register: handleRegister, updateUser };
 };
