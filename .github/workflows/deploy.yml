@@ -25,6 +25,6 @@ jobs:
 
     - name: Deploy to server
       run: |
-        scp -r ./build root@149.50.137.22:/var/www/html
+        scp -P 5288 -r ./build root@149.50.137.22:/var/www/html
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
