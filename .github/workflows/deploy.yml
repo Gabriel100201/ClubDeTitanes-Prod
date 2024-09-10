@@ -1,9 +1,13 @@
+name: Clean known_hosts
+  run: |
+    rm -f ~/.ssh/known_hosts
 name: Deploy Frontend
 
 on:
   push:
     branches:
       - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,10 +25,18 @@ jobs:
       run: npm install
 
     - name: Build project
-      run: npm run build
+      run: npm run build  # Este comando construye la aplicación
+
+    - name: Add SSH key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        # Agregar la clave del servidor remoto al archivo known_hosts
+        ssh-keyscan -p 5288 149.50.137.22 >> ~/.ssh/known_hosts
+        # Verificar que la clave se agregó correctamente
+        cat ~/.ssh/known_hosts
 
     - name: Deploy to server
       run: |
         scp -P 5288 -r ./build root@149.50.137.22:/var/www/html
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
