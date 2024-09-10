@@ -1,12 +1,9 @@
-name: Clean known_hosts
-  run: |
-    rm -f ~/.ssh/known_hosts
 name: Deploy Frontend
 
 on:
   push:
     branches:
-      - master
+      - master  # Cambia 'master' si usas otra rama principal
 
 jobs:
   build:
@@ -26,6 +23,10 @@ jobs:
 
     - name: Build project
       run: npm run build  # Este comando construye la aplicación
+
+    - name: Clean known_hosts
+      run: |
+        rm -f ~/.ssh/known_hosts  # Limpiar el archivo known_hosts para evitar posibles claves incorrectas
 
     - name: Add SSH key
       run: |
