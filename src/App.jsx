@@ -14,7 +14,7 @@ import { Error404 } from "./components/Global/Error404";
 import { Subscription } from "./pages/Subscription";
 import ProtectedRoute from "./components/Global/ProtectedRoute";
 import { SuccessPayment } from "./pages/SuccessPayment";
-import { Ranking } from "./components/Profile/Ranking";
+import { Ranking } from "./pages/Ranking";
 
 export default function App() {
   return (
