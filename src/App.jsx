@@ -14,6 +14,7 @@ import { Error404 } from "./components/Global/Error404";
 import { Subscription } from "./pages/Subscription";
 import ProtectedRoute from "./components/Global/ProtectedRoute";
 import { SuccessPayment } from "./pages/SuccessPayment";
+import { Ranking } from "./components/Profile/Ranking";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/recuperar" element={<FormRecuperar />} />
           <Route path="/subscription" element={<Subscription />} />
+          <Route path="/ranking" element={<Ranking />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/success/:session_id?" element={<SuccessPayment />} />
             <Route path="/profile" element={<Profile />} />

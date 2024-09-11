@@ -64,6 +64,10 @@ export const DesktopNav = ({ isLoggedIn, toggleLogout, userRef, showLogout, navi
                       <FaCrown />
                     </button>
                   )}
+                  <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  onClick={() => navigate("/ranking")}>
+                    Ranking
+                  </button>
                   <button
                     className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     onClick={() => navigate("/profile")}
@@ -71,7 +75,7 @@ export const DesktopNav = ({ isLoggedIn, toggleLogout, userRef, showLogout, navi
                     Ver perfil
                   </button>
                   <button
-                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 mt-2"
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:border-r mt-2"
                     onClick={handleLogoutClick}
                   >
                     Cerrar sesión
