@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import profile from './../../assets/icons/profile.svg';
 import { useAuth } from '../../hooks/useAuth';
 import { updateInfoUserService } from '../../services/updateInfo';
 import { ThreeCircles } from 'react-loader-spinner';
@@ -12,6 +11,7 @@ export const Profile = () => {
     const [loading,] = useState(false);
     const [error,] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [imgAvatar,] = useState(`https://ui-avatars.com/api/?name=${user.username}&background=ea9e23`);
 
     // Manejadores de estado para los campos
     const [username, setUsername] = useState(user.username || '');
@@ -41,6 +41,8 @@ export const Profile = () => {
         navigator.clipboard.writeText(link);
     };
 
+
+
     return (
         <section className="bg-textura-1 h-[calc(100vh-180px)] py-10 flex justify-center items-center">
             {loading ? (
@@ -54,7 +56,7 @@ export const Profile = () => {
                             <div className="rounded-lg p-10 flex flex-col items-center border border-secondary-700 bg-gray-800/80 shadow lg:w-1/3  px-6">
                                 <img
                                     className="h-32 w-32 rounded-full border-4 border-gray-300"
-                                    src={profile}
+                                        src={imgAvatar}
                                     alt="Perfil"
                                 />
                                 <h3 className="text-2xl font-bold mt-4 text-white">{user.username || 'Usuario'}</h3>
