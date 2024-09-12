@@ -8,11 +8,13 @@ export const FormNuevaContraseña = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const { code } = useParams();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         if (password !== confirmPassword) {
             setError('Las contraseñas no coinciden');
             return;
@@ -29,6 +31,9 @@ export const FormNuevaContraseña = () => {
             setError(error.message);
             console.log(error.message);
             toast.error(error.message);
+        }
+        finally {
+            setLoading(false);
         }
     };
 
@@ -78,7 +83,7 @@ export const FormNuevaContraseña = () => {
                                 />
                             </div>
                             {error && <p className="text-red-500 text-sm">{error}</p>}
-                            <button type="submit" className="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800">
+                            <button disabled={loading} type="submit" className={loading ? "w-full text-white focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center  bg-gray-600 relative hover:bg-gray-700  focus:ring-gray-800" : "w-full text-white focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center  bg-primary-600 relative hover:bg-primary-700  focus:ring-primary-800"}>
                                 Recuperar contraseña
                             </button>
                             <p className="text-sm font-light pt-3 text-gray-400">

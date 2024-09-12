@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { resetPasswordQuery } from '../../services/resetPasswordQuery';
 import { toast } from 'sonner';
 import { useState } from 'react';
+import { ThreeCircles } from 'react-loader-spinner';
 
 export const FormRecuperar = () => {
-
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const hanldeSumbit = async (e) => {
         e.preventDefault()
+        setLoading(true)
         try {
             const result = await resetPasswordQuery({ email: e.target.email.value })
             toast.success(result.message);
@@ -18,6 +20,9 @@ export const FormRecuperar = () => {
             setError(error.message);
             toast.error(error.message);
         }
+        finally {
+            setLoading(false)
+        } 
     }
 
     return (
@@ -43,7 +48,25 @@ export const FormRecuperar = () => {
                                 <label htmlFor="email" className="block text-sm font-medium mb-4  text-white">Ingresa tu correo electrónico</label>
                                 <input type="email" name="email" id="email" className="  rounded-lg  block w-full p-2.5  bg-gray-700  border-gray-600  placeholder-gray-400 text-white  focus:ring-blue-500  focus:border-blue-500" placeholder="tu@mail.com" required="" />
                             </div>
-                            <button type="submit" className="w-full text-white focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center  bg-primary-600  hover:bg-primary-700  focus:ring-primary-800">Recuperar contraseña</button>
+                            <button disabled={loading} type="submit" className={loading ? "w-full text-white focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center  bg-gray-600 relative hover:bg-gray-700  focus:ring-gray-800" : "w-full text-white focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center  bg-primary-600 relative hover:bg-primary-700  focus:ring-primary-800"}>
+                                <span>
+                                    Recuperar contraseña
+                                </span>
+                                {
+                                    loading &&
+                                    <div className='absolute right-2 top-3'>
+                                        <ThreeCircles
+                                            visible={true}
+                                            height="20"
+                                            width="20"
+                                            color="#fff"
+                                            ariaLabel="three-circles-loading"
+                                            wrapperStyle={{}}
+                                            wrapperClass=""
+                                        />
+                                    </div>
+                                }
+                            </button>
                             {error && <p className="text-red-500 text-sm">{error}</p>}
                             <p className="text-sm font-light pt-10  text-gray-400">
                                 <Link to={"/login"} className='font-medium hover:underline  text-primary-500'>
