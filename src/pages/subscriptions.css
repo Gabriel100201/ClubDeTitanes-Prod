@@ -1,6 +1,6 @@
 .bg-hero {
   position: relative;
-  background-image: url('./Hero.png');
+  background-image: url('/Hero.png');
   background-position: start;
   background-size: cover;
   z-index: 1;
