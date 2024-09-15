@@ -65,7 +65,7 @@ export const Profile = () => {
                                     <p className=" text-white w-full truncate overflow-hidden text-ellipsis text-nowrap text-center mt-2">{user.email || 'email@dominio.com'}</p>
                                     <p className="text-primary-400 mt-2 text-xl font-semibold">{user.points} points</p>
                                     {
-                                        user.isProUser &&
+                                        user?.isProUser &&
                                         <p className="bg-gradient-to-b py-3 z-10 espacio-titanes from-primary-200 via-primary-400 to-primary-600 inline-block text-center text-transparent bg-clip-text font-bold text-2xl">PREMIUM</p>
                                     }
                             </div>

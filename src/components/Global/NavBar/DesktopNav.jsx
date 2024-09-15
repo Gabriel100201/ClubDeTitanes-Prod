@@ -55,7 +55,7 @@ export const DesktopNav = ({ isLoggedIn, toggleLogout, userRef, showLogout, navi
             {showLogout === true && (
               <div className="relative">
                 <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg">
-                  {!user.isProUser && (
+                  {!user?.isProUser && (
                     <button
                       className="w-full text-left flex justify-between items-center px-4 py-2 text-sm bg-gradient-to-r from-primary-400 to-primary-600 text-white rounded-t-md"
                       onClick={handlePremiumClick}
