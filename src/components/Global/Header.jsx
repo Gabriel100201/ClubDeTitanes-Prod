@@ -77,7 +77,7 @@ export const Header = () => {
     <>
       {!hidden && (
         <>
-      <div className="w-full sm:h-20 bg-inherit"></div>
+          <div className="w-full h-24 sm:h-20"></div>
       <header
         className={`transition-all md:justify-center body-font z-50 top-0 fixed w-full flex flex-col items-center ${isScrolled ? "scrolled" : "noscrolled"}`}
       >
