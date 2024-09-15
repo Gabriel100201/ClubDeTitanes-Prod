@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { FaUser } from "react-icons/fa";
 import { FaCrown } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
@@ -43,7 +42,7 @@ export const MobileNav = ({ isMenuOpen, isLoggedIn }) => {
         </Link>
         {isLoggedIn ? (
           <div className="mt-4 space-y-2">
-            {!user.isProUser && (
+            {!user?.isProUser && (
               <button
                 className="flex shadow__btn h-10 w-full justify-center items-center text-white bg-gradient-to-r from-primary-400 to-primary-600"
                 onClick={handlePremiumClick}
