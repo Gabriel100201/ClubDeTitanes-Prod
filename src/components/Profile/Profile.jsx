@@ -3,6 +3,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { updateInfoUserService } from '../../services/updateInfo';
 import { ThreeCircles } from 'react-loader-spinner';
 import { FaSave } from "react-icons/fa";
+import { toast } from 'sonner';
 
 const URL_BASE = import.meta.env.VITE_WEB_URL;
 
@@ -39,12 +40,13 @@ export const Profile = () => {
         e.preventDefault();
         const link = `${URL_BASE}/register?code=${referralCode}`
         navigator.clipboard.writeText(link);
+        toast.success('Link copiado al portapapeles. Compartelo con tu amigo y espera a que se registre');
     };
 
 
 
     return (
-        <section className="bg-textura-1 h-[calc(100vh-180px)] py-10 flex justify-center items-center">
+        <section className="bg-textura-1 min-h-[calc(100vh-180px)] py-12 flex justify-center items-center">
             {loading ? (
                 <div className='text-black'>Cargando...</div>
             ) : (
@@ -60,8 +62,12 @@ export const Profile = () => {
                                     alt="Perfil"
                                 />
                                 <h3 className="text-2xl font-bold mt-4 text-white">{user.username || 'Usuario'}</h3>
-                                <p className=" text-white">{user.email || 'email@dominio.com'}</p>
-                                    <p className="text-[#ea9e23] mt-2">{user.points}</p>
+                                    <p className=" text-white w-full truncate overflow-hidden text-ellipsis text-nowrap text-center mt-2">{user.email || 'email@dominio.com'}</p>
+                                    <p className="text-primary-400 mt-2 text-xl font-semibold">{user.points} points</p>
+                                    {
+                                        user.isProUser &&
+                                        <p className="bg-gradient-to-b py-3 z-10 espacio-titanes from-primary-200 via-primary-400 to-primary-600 inline-block text-center text-transparent bg-clip-text font-bold text-2xl">PREMIUM</p>
+                                    }
                             </div>
 
 
@@ -117,21 +123,13 @@ export const Profile = () => {
                                                     type="text"
                                                     placeholder="Ingresa tu código de referido"
                                                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-                                                        value={referralCode} disabled
+                                                        value={`${URL_BASE}/register?code=${referralCode}`} disabled
                                                         onChange={(e) => setReferralCode(e.target.value)}
-                                                />
-                                                    <button
-                                                        onClick={(e) => {
-                                                            e.preventDefault();
-                                                            navigator.clipboard.writeText(referralCode);
-                                                        }}
-                                                        className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700">
-                                                        Copiar
-                                                    </button>
+                                                    />
                                                 </div>
                                         </div>
                                     </div>
-                                        <button onClick={handleInvite} className='bg-green-600 w-full text-white py-2 px-6 rounded-lg hover:bg-green-700'>Generar Link de Invitacion</button>
+                                        <button onClick={handleInvite} className='bg-green-600 transition-all w-full text-white py-2 px-6 rounded-lg hover:bg-green-700'>Generar Link de Invitacion</button>
                                 </form>
                             </div>
                         </div>
