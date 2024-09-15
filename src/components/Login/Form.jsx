@@ -83,14 +83,14 @@ export const Form = () => {
                 />
               </div>
               <div className="flex items-center justify-between">
-                <div className="flex items-start">
+                {/* <div className="flex items-start">
                   <div className="flex items-center h-5 mb-4">
                     <input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border rounded focus:ring-3 bg-gray-700 border-gray-600 focus:ring-primary-600 ring-offset-gray-800" />
                   </div>
                   <div className="ml-3 text-sm">
                     <label htmlFor="remember" className="text-gray-300 text-sm">Recordar contraseña</label>
                   </div>
-                </div>
+                </div> */}
               </div>
               <Link to={"/recuperar"} className='font-medium hover:underline text-primary-500 text-[14px]'>
                 Olvidaste tu contraseña?
