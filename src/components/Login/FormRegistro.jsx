@@ -51,7 +51,7 @@ export const FormRegistro = () => {
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         {isRegistered ? (
                             <div className="text-center text-white">
-                                <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl mb-4">Hemos enviado un correo de verificación a tu casilla.</h1>
+                                <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl mb-4">Hemos enviado un correo de verificación a tu casilla. <b>Es posible que lleguen a tu casilla de spam, revísala por favor </b></h1>
                                 <p className='mb-4'>Por favor revisa tu correo.</p>
                                 <Link to="/">
                                     <button type="submit" className="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-primary-700 focus:ring-primary-800 mt-8">Volver</button>
