@@ -1,13 +1,14 @@
 import axios from "axios";
 const URL_API = import.meta.env.VITE_API_URL;
 
-export const generatePaymentUrl = async () => {
+export const generatePaymentUrl = async (type) => {
   try {
     const results = await axios.post(
       URL_API + "/create-payment",
       {
         email: JSON.parse(localStorage.getItem("user")).email,
         name: "",
+        type: type,
       },
       {
         headers: {
