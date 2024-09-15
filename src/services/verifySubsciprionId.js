@@ -13,8 +13,10 @@ export const verifyPaymentSessionId = async ({ session_id }) => {
         },
       }
     );
+    if (results.data) {
     return results.data;
+    }
   } catch (error) {
-    return error.response.data || error;
+    throw new Error(error.response.data || error);
   }
 };
