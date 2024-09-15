@@ -15,10 +15,11 @@ export const HeroSubscription = () => {
 
   const generateUrl = async () => {
     setIsPaymentLoading(true);
-    const data = await generatePaymentUrl();
+    const type = 'mensual';
+    const data = await generatePaymentUrl(type);
     setIsPaymentLoading(false);
     if (!data.url) {
-      navigate('/login');
+      navigate('/profile');
     }
     else window.open(data.url, "_blank");
   }
