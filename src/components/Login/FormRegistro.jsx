@@ -46,7 +46,7 @@ export const FormRegistro = () => {
         <section className="bg-alternative-950 relative w-full flex justify-center items-center p-0 sm:p-8 h-auto min-h-[calc(100vh-180px)]">
             <Background />
 
-            <div className="flex flex-col items-center justify-center px-6  mx-auto   z-10">
+            <div className="flex flex-col items-center justify-center px-6  mx-auto max-w-[780px]   z-10">
                 <div className="w-full rounded-lg shadow border    bg-gray-800 border-gray-700 ">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         {isRegistered ? (
