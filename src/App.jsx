@@ -17,6 +17,7 @@ import { SuccessPayment } from "./pages/SuccessPayment";
 import { Ranking } from "./pages/Ranking";
 import { FormNuevaContraseña } from "./components/Login/FormNuevaContraseña";
 import { Toaster } from 'sonner'
+import { ProUsers } from "./pages/ProUsers";
 
 
 export default function App() {
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="/success/:session_id?" element={<SuccessPayment />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/cursos" element={<Cursos />} />
+            <Route path="/proList" element={<ProUsers />} />
           </Route>
           <Route path="*" element={<Error404 />} />
         </Routes>
