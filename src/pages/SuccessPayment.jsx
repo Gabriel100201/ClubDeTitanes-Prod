@@ -74,6 +74,7 @@ export const SuccessPayment = () => {
                   <span className="text-start w-full font-semibold text-alternative-800 text-md lg:text-2xl">Pago realizado con éxito</span>
                   <span className="text-start w-full">Su email registrado es: {userEmail}</span>
                   <span className="text-green-600 font-bold">¡Ya puedes disfutar de los beneficios de la suscripción!</span>
+                    <span className="text-green-600 font-bold">Tu acceso a los cursos puede tardar unos minutos, ¡gracias!</span>
                 </div>
               }
               {
