@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import { FaCrown } from "react-icons/fa";
 
+
 export const DesktopNav = ({ isLoggedIn, toggleLogout, userRef, showLogout, navigate }) => {
 
   const { logout } = useAuth();
   const { user } = useAuth();
-
   const handleLogoutClick = () => {
     toggleLogout();
     logout();
@@ -74,6 +74,14 @@ export const DesktopNav = ({ isLoggedIn, toggleLogout, userRef, showLogout, navi
                   >
                     Ver perfil
                   </button>
+                  {
+                    user.isAdmin &&
+                    <Link to={"/proList"}>
+                      <button
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:border-r mt-2"
+                      >Usuarios</button>
+                    </Link>
+                  }
                   <button
                     className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:border-r mt-2"
                     onClick={handleLogoutClick}
