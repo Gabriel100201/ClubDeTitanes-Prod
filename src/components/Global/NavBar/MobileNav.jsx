@@ -64,7 +64,7 @@ export const MobileNav = ({ isMenuOpen, isLoggedIn }) => {
               Ver perfil
             </button>
             {
-                    user.isAdmin &&
+                    user?.isAdmin &&
                     <Link to={"/proList"}>
                       <button
                         className="flex shadow__btn_secondary h-10 w-full justify-center items-center hover:bg-gray-100 mt-2"

@@ -75,7 +75,7 @@ export const DesktopNav = ({ isLoggedIn, toggleLogout, userRef, showLogout, navi
                     Ver perfil
                   </button>
                   {
-                    user.isAdmin &&
+                    user?.isAdmin &&
                     <Link to={"/proList"}>
                       <button
                         className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:border-r mt-2"
