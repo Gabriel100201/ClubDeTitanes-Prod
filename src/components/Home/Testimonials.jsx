@@ -11,12 +11,12 @@ export const Testimonial = () => {
 
       <div className="container flex justify-center flex-col sm:flex-row items-center gap-12 sm:gap-16 px-7">
         <div className="flex sm:mb-20 max-w-md p-6 bg-gray-900 border border-gray-700 rounded-lg shadow flex-col gap-3 hover:bg-gray-800 text-center transition-all cursor-pointer">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sigue los pasos de los mejores</h5>
-          <p className="font-normal text-gray-700 dark:text-gray-400 text-lg">Nuestros estudiantes aprenden a generar ingresos siguiendo los pasos de aquellos que ya lo están logrando, a obtener el cuerpo que desean, a superar sus miedos y, sobre todo, a convertirse en auténticos TITANES.</p>
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">Sigue los pasos de los mejores</h5>
+          <p className="font-normal text-gray-400 text-lg">Nuestros estudiantes aprenden a generar ingresos siguiendo los pasos de aquellos que ya lo están logrando, a obtener el cuerpo que desean, a superar sus miedos y, sobre todo, a convertirse en auténticos TITANES.</p>
         </div>
         <div className="flex sm:mt-20 max-w-md p-6 bg-gray-900 border border-gray-700 rounded-lg shadow flex-col gap-3 hover:bg-gray-800 text-center transition-all cursor-pointer">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Mision</h5>
-          <p className="font-normal text-gray-700 dark:text-gray-400 text-lg">Nuestra misión es guiarte hacia la libertad financiera y ayudarte a alcanzar tus metas, ya sean físicas, mentales o económicas. Basamos nuestro éxito en los testimonios de quienes han transformado sus vidas con nosotros.</p>
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">Mision</h5>
+          <p className="font-normal text-gray-400 text-lg">Nuestra misión es guiarte hacia la libertad financiera y ayudarte a alcanzar tus metas, ya sean físicas, mentales o económicas. Basamos nuestro éxito en los testimonios de quienes han transformado sus vidas con nosotros.</p>
         </div>
       </div>
 
