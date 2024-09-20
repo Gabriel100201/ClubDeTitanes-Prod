@@ -17,7 +17,7 @@ export const Profile = () => {
     // Manejadores de estado para los campos
     const [username, setUsername] = useState(user.username || '');
     const [email, setEmail] = useState(user.email || '');
-    const [referralCode, setReferralCode] = useState(user.code || '');
+    const [referralCode, setReferralCode] = useState(user.code == 'unverified' ? '' : user.code || null);
 
     const handleForm = async (e) => {
         setIsLoading(true);
@@ -43,6 +43,10 @@ export const Profile = () => {
         toast.success('Link copiado al portapapeles. Compartelo con tu amigo y espera a que se registre');
     };
 
+    const handleNotInvite = (e) => {
+        e.preventDefault();
+        toast.warning('Debe ser un usuario PREMIUM para invitar a otros usuarios');
+    };
 
 
     return (
@@ -117,19 +121,19 @@ export const Profile = () => {
 
                                     <div className="mt-6">
                                         <h3 className="text-lg font-semibold text-white">Comparte tu código de referido con amigos para ganar PUNTOS!</h3>
-                                        <div className="flex space-x-4 mt-4">
+                                            <div className="flex space-x-4 mt-4">
                                                 <div className="flex items-center w-full gap-4">
                                                 <input
                                                     type="text"
-                                                    placeholder="Ingresa tu código de referido"
-                                                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-                                                        value={`${URL_BASE}/register?code=${referralCode}`} disabled
+                                                        placeholder="******"
+                                                        className={referralCode ? `w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500` : 'w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500 bg-gray-800/20 blur-[2px]'}
+                                                        value={referralCode ? `${URL_BASE}/register?code=${referralCode}` : ''} disabled
                                                         onChange={(e) => setReferralCode(e.target.value)}
                                                     />
                                                 </div>
                                         </div>
                                     </div>
-                                        <button onClick={handleInvite} className='bg-green-600 transition-all w-full text-white py-2 px-6 rounded-lg hover:bg-green-700'>Generar Link de Invitacion</button>
+                                        <button onClick={referralCode ? handleInvite : handleNotInvite} className='bg-green-600 transition-all w-full text-white py-2 px-6 rounded-lg hover:bg-green-700'>Generar Link de Invitacion</button>
                                 </form>
                             </div>
                         </div>
