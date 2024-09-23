@@ -1,61 +1,10 @@
 import { Parallax, useParallax } from 'react-scroll-parallax';
-import { useEffect, useRef } from 'react';
-import Brandon from '../../assets/videos/clubDeTitanesVideo.mp4';
+import { useRef } from 'react';
 import './espacio-titanes.css';
 import './button-brigth.css';
 
 export const SectionEspacio = () => {
-  const videoRef = useRef(null);
   const sectionRef = useRef(null);
-
-  const fadeVolume = (targetVolume) => {
-    const currentVolume = videoRef.current.volume;
-    const step = (targetVolume - currentVolume) / 5;
-
-    const fade = () => {
-      if (Math.abs(videoRef.current.volume - targetVolume) < Math.abs(step)) {
-        videoRef.current.volume = targetVolume;
-        clearInterval(fadeInterval);
-      } else {
-        videoRef.current.volume += step;
-      }
-    };
-
-    const fadeInterval = setInterval(fade, 40);
-  };
-
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          fadeVolume(0.1);
-          videoRef.current.play();
-        } else {
-          fadeVolume(0)
-          setTimeout(() => {
-            videoRef.current.pause()
-          }, 500)
-        }
-      });
-    }, options);
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   const parallax = useParallax({
     onProgressChange: (progress) => {
@@ -96,11 +45,8 @@ export const SectionEspacio = () => {
               VER MÁS
             </button>
           </div>
-          <div className='flex justify-center w-full lg:w-1/2 z-0 video-container'>
-            <video ref={videoRef} controls className='rounded-md'>
-              <source src={Brandon} type='video/mp4' />
-            </video>
-          </div>
+          <div className='flex justify-center w-full lg:w-1/2 z-0 video-container mb-7'>
+            <iframe height="500" width="500" src="https://www.youtube.com/embed/_2ONa3mlkNU" title="CLUB DE TITANES" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>          </div>
         </Parallax>
       </div>
     </section>

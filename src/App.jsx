@@ -18,6 +18,7 @@ import { Ranking } from "./pages/Ranking";
 import { FormNuevaContraseña } from "./components/Login/FormNuevaContraseña";
 import { Toaster } from 'sonner'
 import { ProUsers } from "./pages/ProUsers";
+import { ViewCourse } from "./pages/ViewCourse";
 
 
 export default function App() {
@@ -41,6 +42,7 @@ export default function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/cursos" element={<Cursos />} />
             <Route path="/proList" element={<ProUsers />} />
+            <Route path="/view-course/:id" element={<ViewCourse />} />
           </Route>
           <Route path="*" element={<Error404 />} />
         </Routes>

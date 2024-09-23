@@ -65,7 +65,7 @@ export const SectionCursos = () => {
         {error && <p className="text-white">{error}</p>}
         {cursos && cursos.length > 0 && cursos.map((curso) => {
           if (curso.category == selectedCategory) return (
-          <CardCursos key={curso.id} title={curso.name} desc={curso.description} url={curso.url} />
+          <CardCursos key={curso.id} title={curso.name} desc={curso.description} url={curso.url} imageUrl={curso.image} />
           )
         })}
       </div>

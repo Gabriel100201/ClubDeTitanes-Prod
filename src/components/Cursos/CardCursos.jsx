@@ -2,21 +2,20 @@ import { useNavigate } from 'react-router-dom';
 import './cursos.css'
 import { FaLock } from "react-icons/fa6";
 
-export const CardCursos = ({ title, desc, url }) => {
+export const CardCursos = ({ title, desc, url, imageUrl }) => {
     const navigate = useNavigate();
-
     const handleCursoClick = () => {
         if (!url) {
             navigate('/subscription');
         }
         else {
-            window.open(url, "_blank");
+            navigate(`/view-course/${url}`);
         }
     }
 
     return (
         <div className="lg:flex border border-secondary-700 bg-gray-800/20 rounded-lg shadow bgCursoCard">
-            <img className="object-cover w-full h-56 rounded-tl-lg rounded-bl-lg lg:w-64" src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
+            <img className="object-cover w-full h-56 rounded-tl-lg rounded-bl-lg lg:w-64" src={imageUrl} alt="" />
             <div className="flex flex-col justify-between py-6 lg:mx-6 px-3">
                 <span className="text-xl font-semibold text-white">
                     {title}
