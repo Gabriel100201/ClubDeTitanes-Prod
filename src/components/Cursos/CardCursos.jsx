@@ -15,7 +15,7 @@ export const CardCursos = ({ title, desc, url, imageUrl }) => {
 
     return (
         <div className="lg:flex border border-secondary-700 bg-gray-800/20 rounded-lg shadow bgCursoCard">
-            <img className="object-cover w-full h-56 rounded-tl-lg rounded-bl-lg lg:w-64" src={imageUrl} alt="" />
+            <img className="object-fill w-full h-auto rounded-tl-lg rounded-bl-lg lg:w-80" src={imageUrl} alt="" />
             <div className="flex flex-col justify-between py-6 lg:mx-6 px-3">
                 <span className="text-xl font-semibold text-white">
                     {title}
