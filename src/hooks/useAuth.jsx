@@ -22,8 +22,7 @@ export const useAuth = () => {
     if (!result.token) {
       throw new Error(result);
     }
-    const userData = { email: email, token: result.token, points: result.points, isProUser: result.userType, username: result.username, code: result.referral_code, isAdmin: result.isAdmin };
-    console.log(userData);
+    const userData = { email: email, token: result.token, points: result.points, isProUser: result.userType, username: result.username, code: result.referral_code, isAdmin: result.isAdmin, isReferralUser: result.isReferralUser };
     login(userData);
     navigate('/');
   };

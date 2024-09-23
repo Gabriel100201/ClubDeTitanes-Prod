@@ -8,7 +8,7 @@ import { ThreeCircles } from 'react-loader-spinner';
 export const ConfirmEmail = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isVerified, setIsVerified] = useState(false);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(null);
     const query = new URLSearchParams(useLocation().search);
     const email = query.get('email');
     const token = query.get('token');
@@ -20,6 +20,7 @@ export const ConfirmEmail = () => {
             try {
                 await validateEmailService({ email, token, code });
                 setIsVerified(true);
+                setError(null);
             } catch (error) {
                 setError(error.message);
             }

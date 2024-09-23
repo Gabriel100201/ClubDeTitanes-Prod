@@ -4,6 +4,8 @@ import { updateInfoUserService } from '../../services/updateInfo';
 import { ThreeCircles } from 'react-loader-spinner';
 import { FaSave } from "react-icons/fa";
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
+
 
 const URL_BASE = import.meta.env.VITE_WEB_URL;
 
@@ -13,7 +15,7 @@ export const Profile = () => {
     const [error,] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [imgAvatar,] = useState(`https://ui-avatars.com/api/?name=${user.username}&background=ea9e23`);
-
+    const navigate = useNavigate();
     // Manejadores de estado para los campos
     const [username, setUsername] = useState(user.username || '');
     const [email, setEmail] = useState(user.email || '');
@@ -50,7 +52,22 @@ export const Profile = () => {
 
 
     return (
-        <section className="bg-textura-1 min-h-[calc(100vh-180px)] py-12 flex justify-center items-center">
+        <section className="bg-textura-1 min-h-[calc(100vh-180px)] py-12 flex flex-col justify-center items-center">
+            {
+                user?.isReferralUser && !user?.isProUser && (
+                    <div className="max-w-4xl px-7">
+                        <button
+                            onClick={() => navigate('/subscription')}
+                            className="bg-secondary-600 hover:bg-secondary-700 text-white font-bold py-2 px-4 rounded"
+                        >
+                            Has ingresado un código de referido, si quieres recibir tus puntos debes ser un usuario PREMIUM, que estas esperando!
+                        </button>
+                    </div>
+                )
+            }
+            <div>
+
+
             {loading ? (
                 <div className='text-black'>Cargando...</div>
             ) : (
@@ -140,6 +157,7 @@ export const Profile = () => {
                     </div>
                 </>
             )}
+            </div>
         </section>
     );
 };

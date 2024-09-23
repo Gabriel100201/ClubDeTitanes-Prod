@@ -69,7 +69,7 @@ export const HeroSubscription = () => {
             <li className='flex items-center gap-5'>
               <div className='w-4 h-4 bg-primary-500 rounded-full' />
               <span className='w-full'>
-                Más de 10.000 personas han transformado sus vidas con nuestra ayuda
+                Personas de todo el mundo están aprendiendo con nosotros cada día.
               </span>
             </li>
             <li className='flex items-center gap-5'>

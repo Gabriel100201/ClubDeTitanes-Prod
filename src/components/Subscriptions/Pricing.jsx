@@ -126,11 +126,10 @@ export const Pricing = () => {
             </div>
             <div className="p-4 xl:w-1/3 md:w-1/3 w-full backdrop-blur-sm">
               <div className="h-full p-6 rounded-lg border-2 border-primary-500 flex flex-col relative overflow-hidden">
-                <span className="bg-primary-500 text-white px-3 py-1 trackingWidest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
                 <h2 className="text-sm trackingWidest title-font mb-1 font-medium">PRO</h2>
                 <h1 className="text-5xl text-primary-400 font-semibold leading-none flex items-center pb-4 mb-4 border-b border-gray-200">
                   <span>$200</span>
-                  <span className="text-lg ml-1 font-normal text-gray-200">/mes</span>
+                  <span className="text-lg ml-1 font-normal text-gray-200">/Año</span>
                 </h1>
                 <p className="flex items-center text-gray-200 mb-2">
                   <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
