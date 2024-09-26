@@ -10,6 +10,7 @@ export const ViewCourse = () => {
   const [played, setPlayed] = useState(0);
   const [volume, setVolume] = useState(0.8);
   const [muted, setMuted] = useState(false);
+  const [error, setError] = useState(false); // Estado para manejar el error del video
   const playerRef = useRef(null);
 
   // Función para manejar play/pause
@@ -47,6 +48,20 @@ export const ViewCourse = () => {
     setMuted(!muted);
   };
 
+  // Función para manejar errores del video
+  const handleError = () => {
+    setError(true); // Marcar que hubo un error en la carga del video
+  };
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-180px)] font-sans bg-texture-2 text-center p-6">
+        <h2 className="text-4xl text-white mb-4 font-semibold">Tendras acceso a este video pronto</h2>
+        <p className="text-white">Estamos trabajando para habilitar el acceso. Por favor, vuelva más tarde.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col items-center justify-center bg-texture-2 min-h-[calc(100vh-180px)] font-sans">
       <div className="lg:max-w-7xl w-full lg:p-10">
@@ -60,6 +75,7 @@ export const ViewCourse = () => {
             volume={volume}
             muted={muted}
             onProgress={handleProgress}
+            onError={handleError} // Manejar el error del video
             controls={false} // No usar controles nativos de YouTube
             width="100%"
             height="100%"
